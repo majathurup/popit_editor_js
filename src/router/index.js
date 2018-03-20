@@ -14,7 +14,7 @@ import BaseEntityEdit from '@/components/BaseEntityEdit'
 import personSchema from '../schema/person_form.js'
 import organizationSchema from '../schema/organization_form.js'
 import membershipSchema from '../schema/membership_form.js'
-import postSchema from '../schema/post_form.json'
+import postSchema from '../schema/post_form.js'
 import BaseSubEntityCreate from '@/components/BaseSubEntityCreate'
 import BaseSubEntityEdit from '@/components/BaseSubEntityEdit'
 import contactDetailSchema from '../schema/contact_detail_form.json'
@@ -149,7 +149,9 @@ export default new Router({
       name: 'Post',
       component: BaseEntityCreate,
       props: {
-        schema: postSchema,
+        schema: postSchema.schema,
+        title: postSchema.title,
+        formOptions: postSchema.formOptions,
         entities: 'posts'
       }
     },
