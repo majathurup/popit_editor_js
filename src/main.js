@@ -7,9 +7,13 @@ import App from './App'
 import router from './router'
 import store from './store.js'
 
+import VueFormGenerator from 'vue-form-generator'
+import 'vue-form-generator/dist/vfg.css'
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(VueFormGenerator)
 
 /* eslint-disable no-new */
 new Vue({

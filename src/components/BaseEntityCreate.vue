@@ -2,46 +2,23 @@
   <el-main>
     <el-row>
       <el-card class="form">
-        <form-schema ref="formSchema" :schema="schema" v-model="model">
-          <el-button type="primary" @click="submit">Create</el-button>
-        </form-schema>
+        <h1>{{title}}</h1>
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+        <el-button @click="submit">Submit</el-button>
       </el-card>
     </el-row>
   </el-main>
 </template>
 <script>
-import FormSchema from 'vue-json-schema'
 import { HTTP } from '../http-common.js'
 import { getLanguage } from '../utils.js'
 import objectDiff from '../objDiff.js'
 
-FormSchema.setComponent('form', 'el-form', ({ vm }) => {
-  const labelPosition = 'top'
-  const labelWidth = '120px'
-  const model = vm.data
-  const rule = {}
-
-  vm.fields.forEach((field) => {
-    const type = field.schemaType
-    const required = field.required
-    const message = field.title
-    const trigger = 'blur'
-
-    rule[field.name] = { type, required, message, trigger }
-  })
-
-  return { labelWidth, rule, model, labelPosition }
-})
-
-FormSchema.setComponent('label', 'el-form-item', ({ field }) => ({
-  prop: field.name
-}))
-
-FormSchema.setComponent('text', 'el-input')
-
 export default {
   props: {
     schema: Object,
+    title: String,
+    formOptions: Object,
     entities: String
   },
   data: function () {
@@ -89,9 +66,6 @@ export default {
         this.$router.push('/login')
       }
     }
-  },
-  components: {
-    FormSchema
   }
 }
 </script>
