@@ -11,7 +11,7 @@ import CitationList from '@/components/CitationList'
 import CitationFieldList from '@/components/CitationFieldList'
 import BaseEntityCreate from '@/components/BaseEntityCreate'
 import BaseEntityEdit from '@/components/BaseEntityEdit'
-import personSchema from '../schema/person_form.json'
+import personSchema from '../schema/person_form.js'
 import organizationSchema from '../schema/organization_form.js'
 import membershipSchema from '../schema/membership_form.json'
 import postSchema from '../schema/post_form.json'
@@ -36,7 +36,9 @@ export default new Router({
       name: 'Person',
       component: BaseEntityCreate,
       props: {
-        schema: personSchema,
+        schema: personSchema.schema,
+        title: personSchema.title,
+        formOptions: personSchema.formOptions,
         entities: 'persons'
       }
     },
