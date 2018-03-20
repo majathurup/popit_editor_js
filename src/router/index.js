@@ -13,7 +13,7 @@ import BaseEntityCreate from '@/components/BaseEntityCreate'
 import BaseEntityEdit from '@/components/BaseEntityEdit'
 import personSchema from '../schema/person_form.js'
 import organizationSchema from '../schema/organization_form.js'
-import membershipSchema from '../schema/membership_form.json'
+import membershipSchema from '../schema/membership_form.js'
 import postSchema from '../schema/post_form.json'
 import BaseSubEntityCreate from '@/components/BaseSubEntityCreate'
 import BaseSubEntityEdit from '@/components/BaseSubEntityEdit'
@@ -128,7 +128,9 @@ export default new Router({
       name: 'Membership',
       component: BaseEntityCreate,
       props: {
-        schema: membershipSchema,
+        schema: membershipSchema.schema,
+        title: membershipSchema.title,
+        formOptions: membershipSchema.formOptions,
         entities: 'memberships'
       }
     },
